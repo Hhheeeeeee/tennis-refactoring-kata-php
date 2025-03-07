@@ -15,7 +15,7 @@ class TennisGame1 implements TennisGame
         $this->player2Name = $player2Name;
     }
 
-    public function wonPoint($playerName): void
+    public function wonPoint(string $playerName): void
     {
 
         'player1' == $playerName
