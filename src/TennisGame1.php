@@ -33,14 +33,18 @@ class TennisGame1 implements TennisGame
     public function getScore(): string
     {
         $score = "";
+       // mejor poner if this->isTie() refactor extract method cambio a private
         if ($this->player1Score == $this->player2Score) {
 
-            ($this->player1Score == 0) ? ($score = "Love-All")
+            /*($this->player1Score == 0) ? ($score = "Love-All")
                 : ($this->player1Score == 1 ? $score = "Fifteen-All" : ($this->player1Score == 2 ? $score = "Thirty-All"
-                : $score = "Deuce"));
+                : $score = "Deuce"));*/
 
+            // Cambiar de switch a if sustituir la variable score por return directamente
 
-            /*switch ($this->m_score1) {
+            // en vez de poner if els --> if if if etc
+
+            switch ($this->m_score1) {
                 case 0:
                     $score = "Love-All";
                     break;
@@ -53,8 +57,11 @@ class TennisGame1 implements TennisGame
                 default:
                     $score = "Deuce";
                     break;
-            }*/
-        } elseif ($this->player1Score >= 4 || $this->player2Score >= 4) {
+            }
+        } elseif ($this->player1Score >= 4 || $this->player2Score >= 4) { //Esta funcion tiene muchas responsabilidades
+            // y ademas && abs($this->player1Score - $this->player2Score) == 1: los primeros if else
+            // lo podemos mejorar llevando a una funcion
+            // elseif el otro podemos llevarlo a && abs(..)>=2
             $minusResult = $this->player1Score - $this->player2Score;
             if ($minusResult == 1) {
                 $score = "Advantage ".$this->player1Name;
